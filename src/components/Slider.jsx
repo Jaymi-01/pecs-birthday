@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import One from "../image/one.jpg";
+import One from "../images/one.jpg";
 import Two from "../images/two.jpg";
 import Three from "../images/three.jpg";
 import Four from "../images/four.jpg";
