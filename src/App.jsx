@@ -137,7 +137,7 @@ const App = () => {
       {!hasStarted && (
         <button
           onClick={handleStart}
-          className="mt-auto
+          className="mt-100
           py-3
           px-6
           text-lg
