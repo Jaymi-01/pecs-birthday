@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { AiFillHeart } from "react-icons/ai";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
-import { motion } from "framer-motion";
-import { AiFillHeart } from 'react-icons/ai';
-
-import "./index.css"; // for balloon animation
+import "./index.css"; // Ensure CSS is imported
 
 const App = () => {
   const audioRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
+  const [showBalloons, setShowBalloons] = useState(false);
 
   const handleStart = () => {
     const audio = audioRef.current;
@@ -17,47 +17,91 @@ const App = () => {
       audio
         .play()
         .then(() => {
-          setHasStarted(true); // Trigger content and animation
+          setHasStarted(true);
+          setShowBalloons(true);
+          setTimeout(() => setShowBalloons(false), 6000); // Remove balloons after 6s
         })
         .catch((error) => {
           console.error("Audio playback failed:", error);
+          alert(
+            "Audio could not play. Please make sure your browser allows autoplay or try again."
+          );
         });
     }
   };
 
+  // Smooth fade between loops
+  const fadeAudio = (audio, type = "out", duration = 2000) => {
+    const steps = 20;
+    const interval = duration / steps;
+    let currentStep = 0;
+
+    const fade = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+
+      if (type === "out") {
+        audio.volume = 1 - progress;
+      } else {
+        audio.volume = progress;
+      }
+
+      if (currentStep >= steps) {
+        clearInterval(fade);
+        if (type === "out") {
+          audio.currentTime = 0;
+          audio.play().then(() => fadeAudio(audio, "in"));
+        }
+      }
+    }, interval);
+  };
+
+  // Handle end of audio to restart with fade
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (hasStarted && audio) {
+      audio.volume = 1;
+
+      const handleEnded = () => fadeAudio(audio, "out");
+      audio.addEventListener("ended", handleEnded);
+
+      return () => {
+        audio.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [hasStarted]);
+
+  // Pause when tab is hidden
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleVisibilityChange = () => {
+      if (!audio) return;
+
+      if (document.hidden) {
+        audio.pause();
+      } else {
+        audio.play().catch((err) => {
+          console.warn("Audio not resumed automatically:", err);
+        });
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [hasStarted]);
+
   return (
     <div
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: hasStarted ? "flex-start" : "space-between",
-        alignItems: "center",
-        // padding: '2rem'
-      }}
+       className={`min-h-screen flex flex-col items-center ${
+    hasStarted ? 'justify-start' : 'justify-between'
+  } px-4 py-6 relative overflow-hidden`}
     >
-      {/* Show content and balloons only after starting */}
       {hasStarted && (
         <>
-          {/* Floating Balloons */}
-          <div className="balloon-container">
-            {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-              <img
-                key={i}
-                src={`/b${i}.png`}
-                alt={`balloon ${i}`}
-                className="balloon"
-                style={{
-                  left: `${i * 10 + Math.random() * 5}%`,
-                  animationDelay: `${Math.random() * 2}s`,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Main Content */}
           <Header />
           <div
             style={{
@@ -72,56 +116,87 @@ const App = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
-              style={{
-                fontSize: "2rem",
-                fontWeight: "bold",
-                margin: 0,
-              }}
+              className="text-2xl md:text-4xl font-bold"
             >
-            Happy Birthday
+              🎉 Happy Birthday
             </motion.h1>
-
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              style={{
-                fontSize: "2rem",
-                fontWeight: "bold",
-                color: "#FC6C85",
-                marginTop: "0.5rem",
-              }}
+              className="text-2xl md:text-4xl font-bold text-pink-500 flex items-center gap-2"
             >
-              Peculiar <AiFillHeart className="pulsing-heart" size={32} color="red" />
+              Peculiar{" "}
+              <AiFillHeart className="pulsing-heart" size={32} color="red" />
             </motion.span>
           </div>
           <Slider />
         </>
       )}
 
-      {/* Start Button (shown only before app starts) */}
       {!hasStarted && (
         <button
           onClick={handleStart}
-          style={{
-            marginTop: "auto",
-            padding: "1rem 2rem",
-            fontSize: "1.5rem",
-            fontWeight: "bolder",
-            backgroundColor: "#FF69B4",
-            color: "#fff",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            marginBottom: "2rem",
-          }}
+          className="mt-auto
+          py-3
+          px-6
+          text-lg
+          font-bold
+          bg-cherry-blossom
+          text-white
+          rounded-lg
+          shadow-md
+          transition"
+          
+          // style={{
+          //   marginTop: 'auto',
+          //   padding: '1rem 2rem',
+          //   fontSize: '1.5rem',
+          //   fontWeight: 'bolder',
+          //   backgroundColor: '#FF69B4',
+          //   color: '#fff',
+          //   border: 'none',
+          //   borderRadius: '8px',
+          //   cursor: 'pointer',
+          // }}
         >
           Start App with Sound
         </button>
       )}
 
-      {/* Hidden Audio */}
-      <audio ref={audioRef} src="/music.mp3" preload="auto" loop/>
+      <audio ref={audioRef} src="/music.mp3" preload="auto" />
+
+      {/* Floating Balloons */}
+      {showBalloons && (
+        <>
+          {[1, 2, 3, 4, 5, 6, 7]
+            .map((i) => ({
+              id: i,
+              delay: Math.random() * 3, // delay between 0–3s
+              left: Math.floor(Math.random() * 80) + 5, // left between 5%–85%
+            }))
+            .sort((a, b) => a.delay - b.delay) // optional: smoother visual flow
+            .map(({ id, delay, left }) => (
+              <img
+                key={id}
+                src={`/b${id}.png`}
+                alt={`Balloon ${id}`}
+                className="balloon"
+                style={{
+                  position: "absolute",
+                  bottom: "-100px",
+                  left: `${left}%`,
+                  width: "60px",
+                  animation: `floatUp 5s ease-out forwards`,
+                  animationDelay: `${delay}s`,
+                  zIndex: 9999,
+                  opacity: 0,
+                  animationFillMode: "forwards",
+                }}
+              />
+            ))}
+        </>
+      )}
     </div>
   );
 };
