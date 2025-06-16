@@ -98,7 +98,7 @@ const App = () => {
     <div
        className={`min-h-screen flex flex-col items-center ${
     hasStarted ? 'justify-start' : 'justify-between'
-  } px-4 py-6 relative overflow-hidden`}
+  }  relative overflow-hidden`}
     >
       {hasStarted && (
         <>
@@ -142,7 +142,7 @@ const App = () => {
           px-6
           text-lg
           font-bold
-          bg-cherry-blossom
+          bg-hot-pink
           text-white
           rounded-lg
           shadow-md
@@ -160,7 +160,7 @@ const App = () => {
           //   cursor: 'pointer',
           // }}
         >
-          Start App with Sound
+          Start App
         </button>
       )}
 
