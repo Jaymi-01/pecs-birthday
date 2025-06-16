@@ -121,7 +121,7 @@ const App = () => {
       )}
 
       {/* Hidden Audio */}
-      <audio ref={audioRef} src="/music.mp3" preload="auto" />
+      <audio ref={audioRef} src="/music.mp3" preload="auto" loop/>
     </div>
   );
 };
