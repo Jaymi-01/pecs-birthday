@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { AiFillHeart } from "react-icons/ai";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
+import Hero from "./components/Hero";
+import Card from "./components/Card";
+import Footer from "./components/Footer"
 import "./index.css"; // Ensure CSS is imported
 
 const App = () => {
@@ -96,9 +99,9 @@ const App = () => {
 
   return (
     <div
-       className={`min-h-screen flex flex-col items-center ${
-    hasStarted ? 'justify-start' : 'justify-between'
-  }  relative overflow-hidden`}
+      className={`min-h-screen flex flex-col items-center ${
+        hasStarted ? "justify-start" : "justify-between"
+      }  relative overflow-hidden`}
     >
       {hasStarted && (
         <>
@@ -130,7 +133,10 @@ const App = () => {
               <AiFillHeart className="pulsing-heart" size={32} color="red" />
             </motion.span>
           </div>
+          <Hero />
           <Slider />
+          <Card />
+          <Footer />
         </>
       )}
 
@@ -147,18 +153,6 @@ const App = () => {
           rounded-lg
           shadow-md
           transition"
-          
-          // style={{
-          //   marginTop: 'auto',
-          //   padding: '1rem 2rem',
-          //   fontSize: '1.5rem',
-          //   fontWeight: 'bolder',
-          //   backgroundColor: '#FF69B4',
-          //   color: '#fff',
-          //   border: 'none',
-          //   borderRadius: '8px',
-          //   cursor: 'pointer',
-          // }}
         >
           Start App
         </button>
@@ -219,4 +213,4 @@ export default App;
 // 				and make it the best memory..
 // 				lastly...
 // 				I'd like to wish you one more time
-// 				a very happy birthday Sapthesh V
+// 				a very happy birthday
