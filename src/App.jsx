@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
 import { motion } from "framer-motion";
+import { AiFillHeart } from 'react-icons/ai';
+
 import "./index.css"; // for balloon animation
 
 const App = () => {
@@ -76,7 +78,7 @@ const App = () => {
                 margin: 0,
               }}
             >
-              🎉 Happy Birthday
+            Happy Birthday
             </motion.h1>
 
             <motion.span
@@ -90,7 +92,7 @@ const App = () => {
                 marginTop: "0.5rem",
               }}
             >
-              Peculiar 🎈
+              Peculiar <AiFillHeart className="pulsing-heart" size={32} color="red" />
             </motion.span>
           </div>
           <Slider />
