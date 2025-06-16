@@ -19,7 +19,7 @@ const Card = () => {
         >
           <h3 className="text-pink-600 font-semibold">To The Pain In The Ass</h3>
           <p className="text-pink-800 font-bold">Peculiar</p>
-          <p className="mt-2 text-black leading-snug text-xl">
+          <p className="mt-2 text-black leading-snug text-md">
             Your light is soft, yet fierce and true,
             You turn the dark to brighter days.
             A blazing sun, a northern star
