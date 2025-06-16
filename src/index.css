@@ -29,8 +29,12 @@ body{
 
 .balloon {
   position: absolute;
-  width: 60px;
+  bottom: -100px;
+  width: 48px;
   animation: floatUp 5s ease-out forwards;
+  z-index: 50;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 @keyframes floatUp {
@@ -61,5 +65,10 @@ body{
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+@media (min-width: 768px) {
+  .balloon {
+    width: 60px;
   }
 }
