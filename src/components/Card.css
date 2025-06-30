@@ -1,7 +1,13 @@
 .perspective {
-  perspective: 1200px;
+  perspective: 1000px;
 }
 
-.rotate-y-180 {
-  transform: rotateY(180deg);
+.card-front {
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  z-index: 1;
+}
+
+.card-inside {
+  z-index: 0;
 }
