@@ -95,19 +95,15 @@ const Card = () => {
             <div className="absolute inset-0 flex flex-col justify-between p-6"
                  style={{ backgroundColor: currentContent.bgImage ? 'rgba(255,255,255,0.7)' : 'transparent' }}>
                 <div>
-                    <h3 className={`${currentContent.headerColor} font-semibold text-lg`}>
+                    <h3 className={`${currentContent.headerColor} font-semibold text-md`}>
                         {currentContent.title}
                     </h3>
-                    {currentContent.recipient && (
-                        <p className={`${currentContent.headerColor} font-bold text-xl`}>
-                            {currentContent.recipient}
-                        </p>
-                    )}
-                    <p className={`mt-2 ${currentContent.textColor} leading-snug text-md whitespace-pre-line`}>
+                    
+                    <p className={`mt-2 ${currentContent.textColor} leading-snug text-lg whitespace-pre-line`}>
                         {currentContent.message}
                     </p>
                 </div>
-                <p className={`mt-1 text-right ${currentContent.headerColor} font-medium`}>
+                <p className={`mt-1 text-right ${currentContent.headerColor} font-medium text-md`}>
                     — {currentContent.signature}
                 </p>
                 <div className="absolute bottom-1 left-0 right-0 text-center text-sm text-gray-500">
