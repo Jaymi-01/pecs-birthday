@@ -4,6 +4,7 @@ import b1 from '/b1.png';
 import b2 from '/b2.png';
 import b3 from '/b3.png';
 import coverImage from '../images/five.jpg';
+import { AiFillHeart } from "react-icons/ai";
 
 const Card = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,22 +12,19 @@ const Card = () => {
 
   const cardPages = [
     {
-      title: 'To The Pain In The Ass',
-      recipient: 'Peculiar',
-      message: `Your light is soft, yet fierce and true,
-                You turn the dark to brighter days.
-                A blazing sun, a northern star.`,
+      title: 'To The Beautifool',
+      message: `It's finally your birthday, Fool.
+      although, I'd be with you by the time you read this, I will still wish you a happy birthday (Joel begged me).
+      Thank you for the bread money, words of encouragement, and headaches. You're the sister I never had even thou name born you. Do have a beautiful year ahead. Try marry inside that period too. A fool at 22!!! .`,
       signature: 'Loba',
       bgColor: 'bg-white',
       textColor: 'text-black',
       headerColor: 'text-pink-600',
-      bgImage: null,
     },
     {
-      title: 'Page 2: A New Adventure',
-      message: `Another year, another adventure! Wishing you endless joy,
-                laughter, and success in everything you do.
-                May this year be your best one yet!`,
+      title: 'Happy Birthday, Beautiful,',
+      message: `You're an amazing woman and an even stronger woman but it won't be bad if you add height.
+      I love you loads`,
       signature: 'Tobi',
       bgColor: 'bg-white',
       textColor: 'text-black',
@@ -62,7 +60,7 @@ const Card = () => {
 
   return (
     <div className="mt-10 flex items-center justify-start">
-      <div className="relative w-[250px] h-[300px] perspective" onClick={handleCardClick}>
+      <div className="relative w-[350px] h-[400px] perspective" onClick={handleCardClick}>
         <div
           className={`card-front absolute w-full h-full bg-cover bg-center border-4 border-pink-400 rounded-lg shadow-xl transform origin-left transition-transform duration-700 ease-in-out ${
             isOpen ? '-rotate-y-180' : ''
@@ -100,7 +98,7 @@ const Card = () => {
                     </h3>
                     
                     <p className={`mt-2 ${currentContent.textColor} leading-snug text-lg whitespace-pre-line`}>
-                        {currentContent.message}
+                        {currentContent.message}<AiFillHeart className="inline-block ml-1 mb-1 text-red-500" />
                     </p>
                 </div>
                 <p className={`mt-1 text-right ${currentContent.headerColor} font-medium text-md`}>
