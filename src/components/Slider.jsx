@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import './Slider.css'
 import One from "../images/one.jpg";
 import Two from "../images/two.jpg";
 import Three from "../images/three.jpg";
@@ -19,8 +20,7 @@ const Slider = () => {
     <>
       <div className="mt-10 px-5 text-center text-xl">
         <div className="mb-2">
-          I did not want to tip you off, so I picked pictures of you I liked
-          from the internet and made this
+          
         </div>
         <Swiper
           effect={"coverflow"}
@@ -34,7 +34,10 @@ const Slider = () => {
             modifier: 1,
             slideShadows: true,
           }}
-          pagination={true}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true, // This is key for the 3D effect on pagination
+          }}
           modules={[EffectCoverflow, Pagination]}
           className="mySwiper"
         >
