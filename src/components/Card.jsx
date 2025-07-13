@@ -19,7 +19,6 @@ const Card = () => {
       signature: "Loba",
       bgColor: "bg-white",
       textColor: "text-black",
-      headerColor: "text-pink-600",
     },
     {
       title: "Happy Birthday, Beautiful,",
@@ -29,18 +28,16 @@ const Card = () => {
       signature: "Tobi",
       bgColor: "bg-white",
       textColor: "text-black",
-      headerColor: "text-blue-600",
       
     },
     {
       title: "Happy Birthday, Pecu-chan",
       message: `You're a wonderful woman, and a great friend. A force to be reckoned with. A menace to the world. and the light to my life (allegedly).
       I am proud of the woman you are becoming, and I can't wait to see you take the world by storm.
-      I hope this year brings you all the happiness and success you deserve, and I pray you never lose you smile. I love you lot`,
+      I hope this year brings you all the happiness and success you deserve, and I pray you never lose you smile. I love you lots`,
       signature: "Joel",
       bgColor: "bg-white",
       textColor: "text-black",
-      headerColor: "text-green-600",
     },
   ];
 
@@ -121,7 +118,7 @@ const Card = () => {
             >
               <div>
                 <h3
-                  className={`${currentContent.headerColor} font-semibold text-lg`}
+                  className={`${currentContent.headerColor} font-semibold text-lg text-hot-pink`}
                 >
                   {currentContent.title}
                 </h3>
@@ -134,7 +131,7 @@ const Card = () => {
                 </p>
               </div>
               <p
-                className={`mt-1 text-right ${currentContent.headerColor} font-medium text-3xl font-script`}
+                className={`mt-1 text-right ${currentContent.headerColor} font-medium text-3xl font-script text-watermelon`}
               >
                 — {currentContent.signature}
               </p>
