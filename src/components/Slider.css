@@ -7,7 +7,7 @@
 }
 
 .swiper-pagination-bullet-active {
-  background: #007aff; /* Active bullet color */
+  background: #FC6C85; /* Active bullet color */
   opacity: 1;
   transform: scale(1.2); /* Larger for the active bullet */
 }

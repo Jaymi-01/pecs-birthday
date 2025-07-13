@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-// Import Autoplay CSS if you have specific styles for it, though often not strictly necessary for basic functionality
-// import "swiper/css/autoplay";
+import "swiper/css/autoplay";
+import "../components/Slider.css"; // Make sure this path is correct
 
 import One from "../images/one.jpg";
 import Two from "../images/two.jpg";
@@ -45,10 +45,10 @@ const Slider = () => {
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true, 
+            pauseOnMouseEnter: true,
           }}
-          modules={[EffectCoverflow, Pagination, Autoplay]} 
-          className="mySwiper"
+          modules={[EffectCoverflow, Pagination, Autoplay]}
+          className="mySwiper rounded-lg shadow-lg"
         >
           <SwiperSlide>
             <img className="h-[300px] w-full" src={One} />

@@ -11,3 +11,7 @@
 .card-inside {
   z-index: 0;
 }
+
+.balloon-straight {
+  transform: rotate(0deg) !important;
+}

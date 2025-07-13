@@ -121,7 +121,7 @@ const App = () => {
               transition={{ duration: 1 }}
               className="text-2xl md:text-4xl font-bold"
             >
-              🎉 Happy Birthday
+            Happy Birthday
             </motion.h1>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
