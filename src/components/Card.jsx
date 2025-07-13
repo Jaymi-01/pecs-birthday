@@ -118,7 +118,7 @@ const Card = () => {
             >
               <div>
                 <h3
-                  className={`${currentContent.headerColor} font-semibold text-lg text-hot-pink`}
+                  className={`${currentContent.headerColor} font-semibold text-lg text-hot-pink font-primary`}
                 >
                   {currentContent.title}
                 </h3>

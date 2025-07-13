@@ -127,7 +127,7 @@ const App = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              className="text-2xl md:text-4xl font-bold text-pink-500 flex items-center gap-2"
+              className="text-2xl md:text-4xl font-bold text-pink-500 flex items-center gap-2 semibold font-primary"
             >
               Peculiar{" "}
               <AiFillHeart className="pulsing-heart" size={32} color="red" />
